@@ -2337,6 +2337,8 @@
       function startMusic() {
         if (!creditsScreen.hidden) return;
         const request = ++musicPlaybackRequest;
+        gameMusic.currentTime = 0;
+        musicStatus.textContent = "Iniciando música...";
         if (ensureAudioContext()) {
           audioContext.resume().catch(() => {
             if (request === musicPlaybackRequest) {
@@ -2354,6 +2356,13 @@
               : "Não foi possível iniciar a música.";
           }
         });
+      }
+
+      function stopMusic() {
+        musicPlaybackRequest += 1;
+        gameMusic.pause();
+        gameMusic.currentTime = 0;
+        musicStatus.textContent = "Música parada ao fechar o Brasileirão.";
       }
 
       function stopCreditsMusic() {
@@ -2476,6 +2485,7 @@
 
       function openGameMenu() {
         stopCrowdShout();
+        stopMusic();
         leagueScreen.hidden = true;
         leagueTableScreen.hidden = true;
         gameModeChoice.value = leagueModeActive ? "league" : "quick";
@@ -2517,6 +2527,7 @@
 
       function beginMatch(playerIndex) {
         controlledPlayer = blueTeam[playerIndex];
+        stopMusic();
         goalMessage = "";
         kickoffTime = 0;
         freezeTime = 0;
@@ -2535,7 +2546,6 @@
         gameStarted = true;
         hasStarted = true;
         nextCrowdShoutAt = 0;
-        startMusic();
       }
 
       window.addEventListener("resize", resize);
@@ -2571,7 +2581,6 @@
         const panel = document.getElementById("settings-panel");
         panel.hidden = !panel.hidden;
         document.getElementById("settings-toggle").setAttribute("aria-expanded", String(!panel.hidden));
-        if (!panel.hidden) startMusic();
       });
       openCreditsButton.addEventListener("click", () => {
         document.getElementById("settings-panel").hidden = true;
@@ -2605,6 +2614,7 @@
       document.getElementById("league-view-table").addEventListener("click", showLeagueTable);
       document.getElementById("league-table-back").addEventListener("click", closeLeagueTable);
       document.getElementById("league-back").addEventListener("click", () => {
+        stopMusic();
         leagueScreen.hidden = true;
         leagueTableScreen.hidden = true;
         menuLayout.hidden = false;

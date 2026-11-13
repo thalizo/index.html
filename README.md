@@ -9,5 +9,5 @@ Abra `thalesfutindex.html` com a extensão Live Server no VS Code. O servidor lo
 ## Arquivos
 
 - `thalesfutindex.html`: jogo.
-- `trilha.mp3`: música do jogo e do menu do Brasileirão.
+- `trilha.mp3`: toca em loop somente enquanto o painel do Brasileirão está aberto; para ao sair do painel ou iniciar uma partida.
 - `trilha-creditos.mp3`: música dos créditos.
