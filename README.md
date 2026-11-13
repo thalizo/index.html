@@ -4,10 +4,10 @@ Jogo de futebol arcade em HTML, com clubes do Brasileirão, modo campeonato e qu
 
 ## Como jogar
 
-Abra `thales fut.html` com a extensão Live Server no VS Code. O servidor local permite carregar as músicas do jogo.
+Abra `thalesfutindex.html` com a extensão Live Server no VS Code. O servidor local permite carregar as músicas do jogo.
 
 ## Arquivos
 
-- `thales fut.html`: jogo.
+- `thalesfutindex.html`: jogo.
 - `trilha.mp3`: música do jogo e do menu do Brasileirão.
 - `trilha-creditos.mp3`: música dos créditos.
